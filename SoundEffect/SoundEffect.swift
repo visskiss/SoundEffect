@@ -14,7 +14,6 @@ import AVFoundation
 public class SoundEffect {
     
     let  players:[AVAudioPlayer]
-    let playersMaxIndex:UInt32
     /**
      Loads a series of sound effects with names "resourceName" and also resourceName_1, resourceName_2 etc...  
      
@@ -57,15 +56,16 @@ public class SoundEffect {
             return nil
         }
         players = thePlayers
-        playersMaxIndex = UInt32(players.count) - 1
     }
     
     /**
      Plays one of the sounds effects at random at the selected volume.
     */
     public func play(volume:Float) {
-        players[Int(arc4random_uniform(playersMaxIndex))].volume = volume
-        players[Int(arc4random_uniform(playersMaxIndex))].play()
+        let i = Int(arc4random_uniform(UInt32(players.count)))
+        print (i)
+        players[i].volume = volume
+        players[i].play()
     }
     
 }
