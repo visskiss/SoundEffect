@@ -10,6 +10,7 @@
 		F1BA33D21C8DEC97005531E6 /* SoundEffect.h in Headers */ = {isa = PBXBuildFile; fileRef = F1BA33D11C8DEC97005531E6 /* SoundEffect.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F1BA33D91C8DEC97005531E6 /* SoundEffect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1BA33CE1C8DEC97005531E6 /* SoundEffect.framework */; };
 		F1BA33DE1C8DEC97005531E6 /* SoundEffectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BA33DD1C8DEC97005531E6 /* SoundEffectTests.swift */; };
+		F1BA33E91C8DED1C005531E6 /* SoundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BA33E81C8DED1C005531E6 /* SoundEffect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		F1BA33D81C8DEC97005531E6 /* SoundEffectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoundEffectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1BA33DD1C8DEC97005531E6 /* SoundEffectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffectTests.swift; sourceTree = "<group>"; };
 		F1BA33DF1C8DEC97005531E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1BA33E81C8DED1C005531E6 /* SoundEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundEffect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			children = (
 				F1BA33D11C8DEC97005531E6 /* SoundEffect.h */,
 				F1BA33D31C8DEC97005531E6 /* Info.plist */,
+				F1BA33E81C8DED1C005531E6 /* SoundEffect.swift */,
 			);
 			path = SoundEffect;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1BA33E91C8DED1C005531E6 /* SoundEffect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +314,7 @@
 		F1BA33E31C8DEC97005531E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -320,12 +325,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = visskiss.SoundEffect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		F1BA33E41C8DEC97005531E6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -378,6 +385,7 @@
 				F1BA33E41C8DEC97005531E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F1BA33E51C8DEC97005531E6 /* Build configuration list for PBXNativeTarget "SoundEffectTests" */ = {
 			isa = XCConfigurationList;
@@ -386,6 +394,7 @@
 				F1BA33E71C8DEC97005531E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
