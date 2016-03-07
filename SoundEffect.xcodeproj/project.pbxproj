@@ -31,6 +31,7 @@
 		F1BA33DD1C8DEC97005531E6 /* SoundEffectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffectTests.swift; sourceTree = "<group>"; };
 		F1BA33DF1C8DEC97005531E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1BA33E81C8DED1C005531E6 /* SoundEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundEffect.swift; sourceTree = "<group>"; };
+		F1BA34081C8DF94B005531E6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +56,7 @@
 		F1BA33C41C8DEC97005531E6 = {
 			isa = PBXGroup;
 			children = (
+				F1BA34081C8DF94B005531E6 /* AVFoundation.framework */,
 				F1BA33D01C8DEC97005531E6 /* SoundEffect */,
 				F1BA33DC1C8DEC97005531E6 /* SoundEffectTests */,
 				F1BA33CF1C8DEC97005531E6 /* Products */,
@@ -151,6 +153,7 @@
 				TargetAttributes = {
 					F1BA33CD1C8DEC97005531E6 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 44M68YRYPZ;
 					};
 					F1BA33D71C8DEC97005531E6 = {
 						CreatedOnToolsVersion = 7.3;
@@ -315,12 +318,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SoundEffect/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = visskiss.SoundEffect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -333,12 +338,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SoundEffect/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = visskiss.SoundEffect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
