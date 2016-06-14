@@ -63,7 +63,6 @@ public class SoundEffect {
     */
     public func play(volume:Float) {
         let i = Int(arc4random_uniform(UInt32(players.count)))
-        print (i)
         players[i].volume = volume
         players[i].play()
     }
