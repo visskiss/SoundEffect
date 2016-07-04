@@ -27,12 +27,12 @@ public class SoundEffect {
     public init? (resourceName:String) {
         var thePlayers = [AVAudioPlayer]()
         
-        let nameOnly = (resourceName as NSString).stringByDeletingPathExtension
+        let nameOnly = (resourceName as NSString).deletingPathExtension
         let fileExt  = (resourceName as NSString).pathExtension
         
-        if let url = NSBundle.mainBundle().URLForResource(nameOnly, withExtension: fileExt) {
+        if let url = Bundle.main().urlForResource(nameOnly, withExtension: fileExt) {
             do {
-                try thePlayers.append(AVAudioPlayer(contentsOfURL: url))
+                try thePlayers.append(AVAudioPlayer(contentsOf: url))
                 thePlayers.last?.prepareToPlay()
             } catch {
                 NSLog("Failed to initialize player with \(nameOnly).\(fileExt)")
@@ -40,9 +40,9 @@ public class SoundEffect {
         }
         var count = 1
         repeat {
-            if let url = NSBundle.mainBundle().URLForResource("\(nameOnly)_\(count)", withExtension: fileExt) {
+            if let url = Bundle.main().urlForResource("\(nameOnly)_\(count)", withExtension: fileExt) {
                 do {
-                    try thePlayers.append(AVAudioPlayer(contentsOfURL: url))
+                    try thePlayers.append(AVAudioPlayer(contentsOf: url))
                     thePlayers.last?.prepareToPlay()
                 } catch {
                     NSLog("Failed to initialize player with \(nameOnly)_\(count).\(fileExt)")
@@ -61,7 +61,7 @@ public class SoundEffect {
     /**
      Plays one of the sounds effects at random at the selected volume.
     */
-    public func play(volume:Float) {
+    public func play(_ volume:Float) {
         let i = Int(arc4random_uniform(UInt32(players.count)))
         players[i].volume = volume
         players[i].play()
