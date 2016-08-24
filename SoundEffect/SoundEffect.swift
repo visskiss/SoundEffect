@@ -30,7 +30,7 @@ public class SoundEffect {
         let nameOnly = (resourceName as NSString).deletingPathExtension
         let fileExt  = (resourceName as NSString).pathExtension
         
-        if let url = Bundle.main().urlForResource(nameOnly, withExtension: fileExt) {
+        if let url = Bundle.main.url(forResource:nameOnly, withExtension: fileExt) {
             do {
                 try thePlayers.append(AVAudioPlayer(contentsOf: url))
                 thePlayers.last?.prepareToPlay()
@@ -40,7 +40,7 @@ public class SoundEffect {
         }
         var count = 1
         repeat {
-            if let url = Bundle.main().urlForResource("\(nameOnly)_\(count)", withExtension: fileExt) {
+            if let url = Bundle.main.url(forResource:"\(nameOnly)_\(count)", withExtension: fileExt) {
                 do {
                     try thePlayers.append(AVAudioPlayer(contentsOf: url))
                     thePlayers.last?.prepareToPlay()
