@@ -11,7 +11,7 @@ import Foundation
 import AVFoundation
 
 
-public class SoundEffect {
+open class SoundEffect {
     
     let  players:[AVAudioPlayer]
     /**
@@ -61,7 +61,7 @@ public class SoundEffect {
     /**
      Plays one of the sounds effects at random at the selected volume.
     */
-    public func play(_ volume:Float) {
+    open func play(_ volume:Float) {
         let i = Int(arc4random_uniform(UInt32(players.count)))
         players[i].volume = volume
         players[i].play()
