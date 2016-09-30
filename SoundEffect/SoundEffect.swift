@@ -63,8 +63,10 @@ open class SoundEffect {
     */
     open func play(_ volume:Float) {
         let i = Int(arc4random_uniform(UInt32(players.count)))
-        players[i].volume = volume
-        players[i].play()
+        soundEffectPlayer.play(player: players[i], volume: volume)
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
 }
