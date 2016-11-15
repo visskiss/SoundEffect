@@ -70,8 +70,5 @@ open class SoundEffect:NSObject,AVAudioPlayerDelegate {
         let i = Int(arc4random_uniform(UInt32(players.count)))
         soundEffectPlayer.play(player: players[i], volume: volume)
     }
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
     
 }
