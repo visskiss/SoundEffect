@@ -11,7 +11,7 @@ import Foundation
 import AVFoundation
 
 
-open class SoundEffect {
+open class SoundEffect:NSObject,AVAudioPlayerDelegate {
     
     let  players:[AVAudioPlayer]
     /**
@@ -33,7 +33,6 @@ open class SoundEffect {
         if let url = Bundle.main.url(forResource:nameOnly, withExtension: fileExt) {
             do {
                 try thePlayers.append(AVAudioPlayer(contentsOf: url))
-                thePlayers.last?.prepareToPlay()
             } catch {
                 NSLog("Failed to initialize player with \(nameOnly).\(fileExt)")
             }
@@ -43,7 +42,6 @@ open class SoundEffect {
             if let url = Bundle.main.url(forResource:"\(nameOnly)_\(count)", withExtension: fileExt) {
                 do {
                     try thePlayers.append(AVAudioPlayer(contentsOf: url))
-                    thePlayers.last?.prepareToPlay()
                 } catch {
                     NSLog("Failed to initialize player with \(nameOnly)_\(count).\(fileExt)")
                 }
@@ -56,8 +54,15 @@ open class SoundEffect {
             return nil
         }
         players = thePlayers
+        super.init()
+        for player in players {
+            player.prepareToPlay()
+            player.delegate = self
+        }
     }
-    
+    public func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        player.prepareToPlay()
+    }
     /**
      Plays one of the sounds effects at random at the selected volume.
     */
