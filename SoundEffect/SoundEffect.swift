@@ -11,7 +11,7 @@ import Foundation
 import AVFoundation
 
 
-public class SoundEffect {
+open class SoundEffect:NSObject,AVAudioPlayerDelegate {
     
     let  players:[AVAudioPlayer]
     /**
@@ -27,23 +27,21 @@ public class SoundEffect {
     public init? (resourceName:String) {
         var thePlayers = [AVAudioPlayer]()
         
-        let nameOnly = (resourceName as NSString).stringByDeletingPathExtension
+        let nameOnly = (resourceName as NSString).deletingPathExtension
         let fileExt  = (resourceName as NSString).pathExtension
         
-        if let url = NSBundle.mainBundle().URLForResource(nameOnly, withExtension: fileExt) {
+        if let url = Bundle.main.url(forResource:nameOnly, withExtension: fileExt) {
             do {
-                try thePlayers.append(AVAudioPlayer(contentsOfURL: url))
-                thePlayers.last?.prepareToPlay()
+                try thePlayers.append(AVAudioPlayer(contentsOf: url))
             } catch {
                 NSLog("Failed to initialize player with \(nameOnly).\(fileExt)")
             }
         }
         var count = 1
         repeat {
-            if let url = NSBundle.mainBundle().URLForResource("\(nameOnly)_\(count)", withExtension: fileExt) {
+            if let url = Bundle.main.url(forResource:"\(nameOnly)_\(count)", withExtension: fileExt) {
                 do {
-                    try thePlayers.append(AVAudioPlayer(contentsOfURL: url))
-                    thePlayers.last?.prepareToPlay()
+                    try thePlayers.append(AVAudioPlayer(contentsOf: url))
                 } catch {
                     NSLog("Failed to initialize player with \(nameOnly)_\(count).\(fileExt)")
                 }
@@ -56,15 +54,21 @@ public class SoundEffect {
             return nil
         }
         players = thePlayers
+        super.init()
+        for player in players {
+            player.prepareToPlay()
+            player.delegate = self
+        }
     }
-    
+    public func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        player.prepareToPlay()
+    }
     /**
      Plays one of the sounds effects at random at the selected volume.
     */
-    public func play(volume:Float) {
+    open func play(_ volume:Float) {
         let i = Int(arc4random_uniform(UInt32(players.count)))
-        players[i].volume = volume
-        players[i].play()
+        soundEffectPlayer.play(player: players[i], volume: volume)
     }
     
 }
